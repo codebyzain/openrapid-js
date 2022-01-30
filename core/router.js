@@ -101,11 +101,11 @@ module.exports = async (router) => {
             // Check if endpoint has middleware
             if ($class.$middleware !== undefined) {
               if (Array.isArray($class.$middleware) && $class.$middleware.length > 0) {
-                await asyncForEach($class.$middleware, (item) => {
+                await asyncForEach($class.$middleware, async (item) => {
                   try {
                     const $middleware_path = global.path + "/app/middlewares/" + global.prefix.middleware + item;
                     const $middleware = require($middleware_path);
-                    $middleware($parameters, (status, data) => {
+                    await $middleware($parameters, (status, data) => {
                       if (status == true) {
                         $middleware_count += 1;
                       }
