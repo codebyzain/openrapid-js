@@ -123,9 +123,6 @@ module.exports = async (router) => {
                 $class.$middleware($parameters, (status, data) => {
                   if (status == true) {
                     $middleware_count += 1;
-                  } else {
-                    // Set controller header if exist and middleware failed
-                    $setHeader($class.$headers, res);
                   }
                   if (data !== undefined) {
                     Object.assign($parameters.middleware.data, data);
@@ -145,9 +142,6 @@ module.exports = async (router) => {
               } else {
                 log(`Can't find method $, $run or $controller in ${file} make sure to add one of the method`, "red");
               }
-            } else {
-              // Set controller header if exist and middleware failed
-              $setHeader($class.$headers, res);
             }
           });
           // End
