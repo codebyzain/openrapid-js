@@ -2,7 +2,7 @@ module.exports = {
   // When you want to use database connection you must change this value to true
   enabled: false,
   // Database configuration
-  // Suports only one database connection
+  // Suports multiple database
   credentials: {
     // default: {
     //   // Database name
