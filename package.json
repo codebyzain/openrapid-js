@@ -1,0 +1,47 @@
+{
+  "name": "openrapid-js",
+  "version": "4.0.0",
+  "description": "Newer version of openrapidjs",
+  "main": "init.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "rest",
+    "api",
+    "framework"
+  ],
+  "author": "zaincode",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "expressjs": "^1.0.1",
+    "helmet": "^5.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
+    "moment": "^2.29.1",
+    "momentjs": "^2.0.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15"
+  },
+  "_moduleAliases": {
+    "@": ".",
+    "@app": "app/",
+    "@libs": "libs/",
+    "@config": "config/",
+    "@core": "core/",
+    "@endpoint": "core/",
+    "@controllers": "app/controllers",
+    "@middlewares": "app/middlewares",
+    "@models": "app/models",
+    "@storage": "app/storage",
+    "@model": "core/model.js",
+    "@controller": "core/controller.js"
+  }
+}

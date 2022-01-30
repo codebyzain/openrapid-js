@@ -1,0 +1,42 @@
+[2022-01-17T17:57:42+07:00]
+data middleware ny
+{"data":{"hello":"World","second":"World"}}
+-
+[2022-01-17T17:57:42+07:00]
+{"code":"ER_PARSE_ERROR","errno":1064,"sqlMessage":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE' at line 1","sqlState":"42000","index":0,"sql":"SELECT ALL TABLE"}
+-
+[2022-01-17T18:03:54+07:00]
+data middleware ny
+{"data":{"hello":"World","second":"World"}}
+-
+[2022-01-17T18:03:54+07:00]
+{"code":"ER_PARSE_ERROR","errno":1064,"sqlMessage":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE' at line 1","sqlState":"42000","index":0,"sql":"SELECT ALL TABLE"}
+-
+[2022-01-17T18:13:29+07:00]
+data middleware ny
+{"data":{"hello":"World","second":"World"}}
+-
+[2022-01-17T18:13:29+07:00]
+{"code":"ER_PARSE_ERROR","errno":1064,"sqlMessage":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE' at line 1","sqlState":"42000","index":0,"sql":"SELECT ALL TABLE"}
+-
+[2022-01-17T18:13:30+07:00]
+data middleware ny
+{"data":{"hello":"World","second":"World"}}
+-
+[2022-01-17T18:13:30+07:00]
+{"code":"ER_PARSE_ERROR","errno":1064,"sqlMessage":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE' at line 1","sqlState":"42000","index":0,"sql":"SELECT ALL TABLE"}
+-
+[2022-01-17T18:13:30+07:00]
+data middleware ny
+{"data":{"hello":"World","second":"World"}}
+-
+[2022-01-17T18:13:30+07:00]
+{"code":"ER_PARSE_ERROR","errno":1064,"sqlMessage":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE' at line 1","sqlState":"42000","index":0,"sql":"SELECT ALL TABLE"}
+-
+[2022-01-17T18:13:31+07:00]
+data middleware ny
+{"data":{"hello":"World","second":"World"}}
+-
+[2022-01-17T18:13:31+07:00]
+{"code":"ER_PARSE_ERROR","errno":1064,"sqlMessage":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE' at line 1","sqlState":"42000","index":0,"sql":"SELECT ALL TABLE"}
+-
