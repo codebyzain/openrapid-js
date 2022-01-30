@@ -2,7 +2,7 @@ module.exports = class extends require("@endpoint/controller") {
   // Set a custom header for this spesific endpoint
   // The header property should be an object
   $headers = {
-    "X-Powered-By": "zaincode",
+    "X-Powered-By": "custom_header_value",
   };
   // Accessible path for this controller
   // This is the path of your endpoint
@@ -16,16 +16,8 @@ module.exports = class extends require("@endpoint/controller") {
   };
   // Your main controller
   async $(args) {
-    if (await args.controller.validate.require.header(["x-access-token"])) {
-      const insert = await args.database.query(`INSERT INTO user VALUES(null, '${args.request.params.userName}', 0)`);
-      args.response.json({
-        status: true,
-        data: insert,
-      });
-    } else {
-      args.response.json({
-        status: false,
-      });
-    }
+    args.controller.response.json({
+      status: true,
+    });
   }
 };

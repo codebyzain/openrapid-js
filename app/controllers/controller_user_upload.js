@@ -9,16 +9,14 @@ module.exports = class extends require("@endpoint/controller") {
     const upload = await args.controller.storage.file.save({
       image: {
         destination: "/images",
-        rename: "jancuk",
-      },
-      file_2: {
-        destination: "/images",
-        rename: "jancuk",
+        rename: "new_name",
       },
     });
-    console.log(upload);
+    // Getting the full path of the image
     console.log(args.controller.storage.file.getFullPath(upload.files.image));
+    // Getting the full URL of the image
     console.log(args.controller.storage.file.getFullURL(upload.files.image));
+    // Displayig the uploaded image
     args.controller.storage.file.display(upload.files.image);
   }
 };

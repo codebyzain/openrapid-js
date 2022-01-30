@@ -1,6 +1,6 @@
-const fs = require("fs");
-const global = require("@/global");
-const moment = require("moment");
+const fs = require("fs"),
+  global = require("@/global"),
+  moment = require("moment");
 
 module.exports = (message, color = "white") => {
   global.debugger === undefined ||

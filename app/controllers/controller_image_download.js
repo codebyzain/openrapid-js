@@ -6,6 +6,6 @@ module.exports = class extends require("@endpoint/controller") {
   $method = "GET";
   // Your main controller
   async $(args) {
-    console.log(args.controller.storage.file.download("images/" + args.request.params.filename));
+    args.controller.storage.file.download("images/" + args.request.params.filename);
   }
 };
