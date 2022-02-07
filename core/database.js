@@ -1,8 +1,25 @@
 const mysql = require("mysql2");
 const config = require("@config/database");
 const log = require("@config/log");
-const { type } = require("express/lib/response");
-const e = require("express");
+
+function createPool() {
+  try {
+    const pool = mysql.createPool({
+      ...config.credentials["default"],
+      connectionLimit: 10,
+      waitForConnections: true,
+      queueLimit: 0,
+    });
+
+    const promisePool = pool.promise();
+
+    return promisePool;
+  } catch (error) {
+    return console.log(`Could not connect - ${error}`);
+  }
+}
+
+const pool = createPool();
 
 asyncForEach = async (array, callback) => {
   for (let index = 0; index < array.length; index++) {
@@ -13,7 +30,7 @@ asyncForEach = async (array, callback) => {
 const Database = {
   // Selected Database
   selected: "default",
-  connection_stream: null,
+  connection_stream: async () => pool.getConnection(),
   // Store current result rows
   rows: null,
   // Store current results fields
@@ -22,11 +39,11 @@ const Database = {
   // run sql query
   query: async function (string, callback = null) {
     try {
+      console.log("\n-- Produced SQL Query \n", string.yellow);
       if (config.enabled !== undefined && config.enabled == true) {
-        Database.connection_stream = mysql.createPool(config.credentials[Database.selected]);
-        Database.connection_stream = Database.connection_stream.promise();
-        const [rows, fields] = await Database.connection_stream.query(string);
-        Database.fields = fields;
+        const conn = await Database.connection_stream();
+        const [rows, fields] = await conn.execute(string);
+        conn.release();
         Database.rows = rows;
         Database.selected = "default";
         return rows;
@@ -93,17 +110,19 @@ const Database = {
           val = [];
         if (!Array.isArray(data)) {
           Object.keys(data).forEach((item) => {
-            col.push(item);
-            if (data[item] == null) {
-              val.push(null);
-            } else if (typeof data[item] == "function") {
-              data[item]((str) => {
-                val.push(mysql.escape(str));
-              });
-            } else if (typeof data[item] == "string") {
-              val.push(mysql.escape(data[item]));
-            } else {
-              val.push(mysql.escape(data[item]));
+            if (data[item] !== undefined) {
+              col.push(item);
+              if (data[item] == null) {
+                val.push(null);
+              } else if (typeof data[item] == "function") {
+                data[item]((str) => {
+                  val.push(mysql.escape(str));
+                });
+              } else if (typeof data[item] == "string") {
+                val.push(mysql.escape(data[item]));
+              } else {
+                val.push(mysql.escape(data[item]));
+              }
             }
           });
           queryString = `INSERT INTO ${table} (${col.join(", ")}) VALUES (${val.join(", ")})`;

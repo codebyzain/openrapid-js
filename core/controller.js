@@ -33,6 +33,9 @@ class Core {
         getFullURL: this.#handleFileURL,
       },
     };
+    this.utils = {
+      asyncForEach: this.#asyncForEach,
+    };
   }
 
   #asyncForEach = async (array, callback) => {
